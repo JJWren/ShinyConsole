@@ -2,8 +2,9 @@
 
 Lightweight console coloring helpers published as the `JMykitta.ShinyConsole` NuGet package.
 
-This repository contains an example project that references the package:
-`ShinyConsole.Example\ShinyConsole.Example.csproj`.
+[The github repository](https://github.com/JJWren/ShinyConsole)
+contains [an example project](https://github.com/JJWren/ShinyConsole/tree/main/ShinyConsole.Example)
+that references the package: `ShinyConsole.Example\ShinyConsole.Example.csproj`.
 
 ## Prerequisites
 - .NET 10 SDK installed
@@ -75,16 +76,7 @@ namespace ShinyConsole.Example
 ```
 
 Output:
-![Example Output](./ShinyConsole/ExampleImages/ExampleOutput.png)
-
-
-### Run the example
-- Using Visual Studio:
-    1. Set `ShinyConsole.Example` as the startup project.
-    2. Press F5 or click the Run button to execute the example.
-- Using the dotnet CLI:
-    1. Navigate to the `ShinyConsole.Example` directory in the terminal.
-    2. Run `dotnet run` to execute the example.
+![Example Output](./ExampleImages/ExampleOutput.png)
 
 ## Notes
 - The example project targets `net10.0`.

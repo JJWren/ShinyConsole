@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ShinyConsole\ShinyConsole.csproj" />
+    <PackageReference Include="JMykitta.ShinyConsole" Version="1.0.0" />
   </ItemGroup>
 
 </Project>

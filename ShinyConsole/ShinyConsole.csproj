@@ -2,8 +2,22 @@
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
+	<PackageId>JMykitta.ShinyConsole</PackageId>
+	<Version>1.0.1</Version>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<Authors>Joshua Mykitta</Authors>
+	<Description>
+		This library gives users the option to simplify colorizing console outputs.
+		It gives several standardized options for colorizing console outputs, and also allows users to create their own custom color schemes.
+	</Description>
+	<PackageLicenseExpression>Unlicense</PackageLicenseExpression>
+	<RepositoryUrl>https://github.com/JJWren/ShinyConsole</RepositoryUrl>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+	
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 
 </Project>
