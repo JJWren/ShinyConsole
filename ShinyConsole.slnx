@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="ShinyConsole.Example/ShinyConsole.Example.csproj" />
+  <Project Path="ShinyConsole.UnitTests/ShinyConsole.UnitTests.csproj" />
+  <Project Path="ShinyConsole/ShinyConsole.csproj" />
+</Solution>
