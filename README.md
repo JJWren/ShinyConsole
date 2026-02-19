@@ -75,6 +75,7 @@ namespace ShinyConsole.Example
 ```
 
 Output:
+
 ![Example Output](./ShinyConsole/ExampleImages/ExampleOutput.png)
 
 
