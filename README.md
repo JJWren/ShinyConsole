@@ -81,6 +81,7 @@ PrintGap();
 ```
 
 Output:
+
 <img width="759" height="267" alt="Example Output" src="https://github.com/user-attachments/assets/53bfc639-e3a5-4cc8-b333-adb00efa5049" />
 
 ## General Notes
