@@ -12,12 +12,12 @@ that references the package: `ShinyConsole.Example\ShinyConsole.Example.csproj`.
 
 ## Install from NuGet
 - Using the dotnet CLI (from repository root):
-	- `dotnet add package JMykitta.ShinyConsole --version 1.0.1`
+	- `dotnet add package JMykitta.ShinyConsole --version 2.0.0`
 - Using the Package Manager Console in Visual Studio:
-	- `NuGet\Install-Package JMykitta.ShinyConsole -Version 1.0.1`
+	- `NuGet\Install-Package JMykitta.ShinyConsole -Version 2.0.0`
 - Using Visual Studio UI:
 	1. Right-click the `ShinyConsole.Example` project -> __Manage NuGet Packages__.
-	2. Browse for `JMykitta.ShinyConsole` and install version `1.0.1`.
+	2. Browse for `JMykitta.ShinyConsole` and install version `2.0.0`.
 
 ## csproj reference (example)
 ```xml
@@ -31,54 +31,67 @@ that references the package: `ShinyConsole.Example\ShinyConsole.Example.csproj`.
   </PropertyGroup>
 	
   <ItemGroup>
-    <PackageReference Include="JMykitta.ShinyConsole" Version="1.0.1" />
+    <PackageReference Include="JMykitta.ShinyConsole" Version="2.0.0" />
   </ItemGroup>
 </Project>
 ```
 
 ## Quick Usage Example
-ShinyConsole.Example\Program.cs
+
 ```csharp
-using System;
+using static ShinyConsole.Enums;
+using ShinyConsole.ColorPallettes;
 
-namespace ShinyConsole.Example
-{
-    public static class Program
-    {
-        public static void Main()
-        {
-            // Demonstrate Rainbow
-            string message = "Hello, Rainbow!";
-            Console.WriteLine($"Shiny.Rainbow(\"{message}\"):");
-            Shiny.Rainbow(message);
-            PrintGap();
+/* Demonstrate Rainbow */
 
-            // Demonstrate Random
-            string randomMessage = "Random colors!";
-            Console.WriteLine($"Shiny.Random(\"{randomMessage}\"):");
-            Shiny.Random(randomMessage);
-            PrintGap();
+// - Sequential Characters
+Painter.Colorize("This text tests the coloring goes sequentially on the characters.", Prides.Rainbow);
+PrintGap();
 
-            // Demonstrate Colorize
-            string colorMessage = "This text is red.";
-            Console.WriteLine($"Shiny.Rainbow(\"{colorMessage}\", ConsoleColor.Red):");
-            Shiny.Colorize(colorMessage, ConsoleColor.Red);
-            PrintGap();
-        }
+// - Random Characters
+Painter.Colorize("This text tests the coloring goes randomly on the characters.", Prides.Rainbow, true);
+PrintGap();
 
-        private static void PrintGap()
-        {
-            Console.WriteLine();
-            Console.WriteLine();
-        }
-    }
-}
+// - Sequential Words
+Painter.Colorize("This text tests the coloring goes sequentially on the words.", Prides.Rainbow, false, ColorizationScope.Words);
+PrintGap();
+
+// - Random Words
+Painter.Colorize("This text tests the coloring goes randomly on the words.", Prides.Rainbow, true, ColorizationScope.Words);
+PrintGap();
+
+/* Demonstrate Custom Pallette */
+
+ConsoleColor[] customPallette = [ ConsoleColor.Magenta, ConsoleColor.Cyan, ConsoleColor.Yellow ];
+Painter.Colorize("This text uses a custom pallette!", customPallette, true);
+PrintGap();
+
+/* Demonstrate Custom Pallette with Sentences */
+string multiSentenceMessage = "This tests the coloring goes sequentially on the sentences. See how it changes? See how it changes again!?";
+Painter.Colorize(multiSentenceMessage, National.Italian, false, ColorizationScope.Sentences);
+PrintGap();
+
+/* Demonstrate Custom Pallette with Paragraphs */
+string multiParagraphMessage = "" +
+    "This tests the coloring goes sequentially on the paragraphs.\nSee how it stays the same even though this sentence is on a new line?\n\n" +
+    "But now, the paragraph shifted, so it changes colors!\r\n\r\n" +
+    "Let's try a few sentences in a row. No change yet! Looking good! :)\n\n";
+Painter.Colorize(multiParagraphMessage, National.American, false, ColorizationScope.Paragraphs);
+PrintGap();
 ```
 
 Output:
 
 ![Example Output](./ExampleImages/ExampleOutput.png)
 
-## Notes
+## General Notes
 - The example project targets `net10.0`.
-- If you prefer to pin a different version, update the `Version` attribute in the `<PackageReference>` or the version in the CLI/PMC command.
+- Version 1.0.* is not supported. Please use Version 2.0.0+.
+
+## Release Notes
+- Version 2.0.0:
+  - Complete refactor.
+  - `Shiny` is now `Painter`.
+  - There are now premade color pallettes available in the `ShinyConsole.ColorPallettes` namespace,
+	but you can also create your own custom pallettes by passing an array of `ConsoleColor` values to the `Painter.Colorize` method.
+  

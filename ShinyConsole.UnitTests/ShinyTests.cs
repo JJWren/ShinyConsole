@@ -7,13 +7,13 @@ using ShinyConsole;
 namespace ShinyConsole.UnitTests
 {
     /// <summary>
-    /// Tests for the <see cref="Shiny"/> class.
+    /// Tests for the <see cref="PainterFactory"/> class.
     /// </summary>
     [TestClass]
     public class ShinyTests
     {
         /// <summary>
-        /// Tests that <see cref="Shiny.Colorize"/> writes the message to console with the specified color.
+        /// Tests that <see cref="PainterFactory.Colorize"/> writes the message to console with the specified color.
         /// <br/>Input: Normal message and a valid ConsoleColor.
         /// <br/>Expected: Message is written to console output.
         /// </summary>
@@ -31,7 +31,7 @@ namespace ShinyConsole.UnitTests
             try
             {
                 // Act
-                Shiny.Colorize(message, color);
+                PainterFactory.Colorize(message, color);
 
                 // Assert
                 string output = stringWriter.ToString();
@@ -44,7 +44,7 @@ namespace ShinyConsole.UnitTests
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Colorize"/> resets console color after writing.
+        /// Tests that <see cref="PainterFactory.Colorize"/> resets console color after writing.
         /// <br/>Input: Valid message and color.
         /// <br/>Expected: <see cref="Console.ForegroundColor"/> is reset to original color.
         /// </summary>
@@ -60,7 +60,7 @@ namespace ShinyConsole.UnitTests
             try
             {
                 // Act
-                Shiny.Colorize("Test", ConsoleColor.Magenta);
+                PainterFactory.Colorize("Test", ConsoleColor.Magenta);
 
                 // Assert
                 Assert.AreEqual(originalColor, Console.ForegroundColor);
@@ -73,7 +73,7 @@ namespace ShinyConsole.UnitTests
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Colorize"/> handles empty string correctly.
+        /// Tests that <see cref="PainterFactory.Colorize"/> handles empty string correctly.
         /// <br/>Input: Empty string and valid color.
         /// <br/>Expected: No exception thrown, empty output written.
         /// </summary>
@@ -88,7 +88,7 @@ namespace ShinyConsole.UnitTests
             try
             {
                 // Act
-                Shiny.Colorize(string.Empty, ConsoleColor.Yellow);
+                PainterFactory.Colorize(string.Empty, ConsoleColor.Yellow);
 
                 // Assert
                 string output = stringWriter.ToString();
@@ -101,7 +101,7 @@ namespace ShinyConsole.UnitTests
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Colorize"/> handles whitespace-only string correctly.
+        /// Tests that <see cref="PainterFactory.Colorize"/> handles whitespace-only string correctly.
         /// <br/>Input: Whitespace-only string and valid color.
         /// <br/>Expected: Whitespace written to console.
         /// </summary>
@@ -120,7 +120,7 @@ namespace ShinyConsole.UnitTests
             try
             {
                 // Act
-                Shiny.Colorize(message, ConsoleColor.White);
+                PainterFactory.Colorize(message, ConsoleColor.White);
 
                 // Assert
                 string output = stringWriter.ToString();
@@ -133,7 +133,7 @@ namespace ShinyConsole.UnitTests
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Colorize"/> handles very long strings correctly.
+        /// Tests that <see cref="PainterFactory.Colorize"/> handles very long strings correctly.
         /// <br/>Input: Very long string and valid color.
         /// <br/>Expected: Entire string written to console.
         /// </summary>
@@ -149,7 +149,7 @@ namespace ShinyConsole.UnitTests
             try
             {
                 // Act
-                Shiny.Colorize(longMessage, ConsoleColor.Cyan);
+                PainterFactory.Colorize(longMessage, ConsoleColor.Cyan);
 
                 // Assert
                 string output = stringWriter.ToString();
@@ -162,7 +162,7 @@ namespace ShinyConsole.UnitTests
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Colorize"/> handles special characters correctly.
+        /// Tests that <see cref="PainterFactory.Colorize"/> handles special characters correctly.
         /// <br/>Input: String with special characters and valid color.
         /// <br/>Expected: Special characters written to console.
         /// </summary>
@@ -181,7 +181,7 @@ namespace ShinyConsole.UnitTests
             try
             {
                 // Act
-                Shiny.Colorize(message, ConsoleColor.DarkMagenta);
+                PainterFactory.Colorize(message, ConsoleColor.DarkMagenta);
 
                 // Assert
                 string output = stringWriter.ToString();
@@ -194,7 +194,7 @@ namespace ShinyConsole.UnitTests
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Colorize"/> works with all valid ConsoleColor enum values.
+        /// Tests that <see cref="PainterFactory.Colorize"/> works with all valid ConsoleColor enum values.
         /// <br/>Input: Valid message and each valid ConsoleColor value.
         /// <br/>Expected: No exception thrown, message written for each color.
         /// </summary>
@@ -226,7 +226,7 @@ namespace ShinyConsole.UnitTests
             try
             {
                 // Act
-                Shiny.Colorize(message, color);
+                PainterFactory.Colorize(message, color);
 
                 // Assert
                 string output = stringWriter.ToString();
@@ -239,7 +239,7 @@ namespace ShinyConsole.UnitTests
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Colorize"/> handles invalid enum values.
+        /// Tests that <see cref="PainterFactory.Colorize"/> handles invalid enum values.
         /// <br/>Input: Valid message and invalid ConsoleColor enum value (cast from int).
         /// <br/>Expected: Behavior depends on Console implementation, but method should not throw.
         /// </summary>
@@ -259,7 +259,7 @@ namespace ShinyConsole.UnitTests
             try
             {
                 // Act & Assert - should not throw
-                Shiny.Colorize(message, invalidColor);
+                PainterFactory.Colorize(message, invalidColor);
             }
             finally
             {
@@ -268,7 +268,7 @@ namespace ShinyConsole.UnitTests
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Colorize"/> handles null message.
+        /// Tests that <see cref="PainterFactory.Colorize"/> handles null message.
         /// <br/>Input: Null message and valid color.
         /// <br/>Expected: Console.Write handles null according to its implementation.
         /// </summary>
@@ -284,7 +284,7 @@ namespace ShinyConsole.UnitTests
             try
             {
                 // Act
-                Shiny.Colorize(message!, ConsoleColor.Green);
+                PainterFactory.Colorize(message!, ConsoleColor.Green);
 
                 // Assert
                 string output = stringWriter.ToString();
@@ -298,7 +298,7 @@ namespace ShinyConsole.UnitTests
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Rainbow"/> handles empty string without throwing and resets color.
+        /// Tests that <see cref="PainterFactory.Rainbow"/> handles empty string without throwing and resets color.
         /// <br/>Input: Empty string
         /// <br/>Expected: No output and console color is reset.
         /// </summary>
@@ -316,7 +316,7 @@ namespace ShinyConsole.UnitTests
                 Console.SetOut(stringWriter);
 
                 // Act
-                Shiny.Rainbow(message);
+                PainterFactory.Rainbow(message);
 
                 // Assert
                 string output = stringWriter.ToString();
@@ -331,7 +331,7 @@ namespace ShinyConsole.UnitTests
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Rainbow"/> handles string with only whitespace characters correctly.
+        /// Tests that <see cref="PainterFactory.Rainbow"/> handles string with only whitespace characters correctly.
         /// <br/>Input: "   \t\n"
         /// <br/>Expected: All whitespace characters are written.
         /// </summary>
@@ -349,7 +349,7 @@ namespace ShinyConsole.UnitTests
                 Console.SetOut(stringWriter);
 
                 // Act
-                Shiny.Rainbow(message);
+                PainterFactory.Rainbow(message);
 
                 // Assert
                 string output = stringWriter.ToString();
@@ -363,7 +363,7 @@ namespace ShinyConsole.UnitTests
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Rainbow"/> writes all non-whitespace characters with cycling colors.
+        /// Tests that <see cref="PainterFactory.Rainbow"/> writes all non-whitespace characters with cycling colors.
         /// <br/>Input: "Hello"
         /// <br/>Expected: All characters are written, colors cycle through rainbow array.
         /// </summary>
@@ -381,7 +381,7 @@ namespace ShinyConsole.UnitTests
                 Console.SetOut(stringWriter);
 
                 // Act
-                Shiny.Rainbow(message);
+                PainterFactory.Rainbow(message);
 
                 // Assert
                 string output = stringWriter.ToString();
@@ -395,7 +395,7 @@ namespace ShinyConsole.UnitTests
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Rainbow"/> handles mixed whitespace and non-whitespace characters.
+        /// Tests that <see cref="PainterFactory.Rainbow"/> handles mixed whitespace and non-whitespace characters.
         /// <br/>Input: "Hello World"
         /// <br/>Expected: All characters including space are written.
         /// </summary>
@@ -413,7 +413,7 @@ namespace ShinyConsole.UnitTests
                 Console.SetOut(stringWriter);
 
                 // Act
-                Shiny.Rainbow(message);
+                PainterFactory.Rainbow(message);
 
                 // Assert
                 string output = stringWriter.ToString();
@@ -427,7 +427,7 @@ namespace ShinyConsole.UnitTests
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Rainbow"/> cycles through all seven rainbow colors with exactly seven characters.
+        /// Tests that <see cref="PainterFactory.Rainbow"/> cycles through all seven rainbow colors with exactly seven characters.
         /// <br/>Input: "ABCDEFG" (7 characters, matches rainbow array length)
         /// <br/>Expected: All characters are written, each gets a different color.
         /// </summary>
@@ -445,7 +445,7 @@ namespace ShinyConsole.UnitTests
                 Console.SetOut(stringWriter);
 
                 // Act
-                Shiny.Rainbow(message);
+                PainterFactory.Rainbow(message);
 
                 // Assert
                 string output = stringWriter.ToString();
@@ -460,7 +460,7 @@ namespace ShinyConsole.UnitTests
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Rainbow"/> cycles back to the first color after seven non-whitespace characters.
+        /// Tests that <see cref="PainterFactory.Rainbow"/> cycles back to the first color after seven non-whitespace characters.
         /// <br/>Input: "ABCDEFGH" (8 characters, should cycle back to first color)
         /// <br/>Expected: All characters are written, color cycles back after 7th character.
         /// </summary>
@@ -478,7 +478,7 @@ namespace ShinyConsole.UnitTests
                 Console.SetOut(stringWriter);
 
                 // Act
-                Shiny.Rainbow(message);
+                PainterFactory.Rainbow(message);
 
                 // Assert
                 string output = stringWriter.ToString();
@@ -493,7 +493,7 @@ namespace ShinyConsole.UnitTests
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Rainbow"/> handles very long strings and cycles colors multiple times.
+        /// Tests that <see cref="PainterFactory.Rainbow"/> handles very long strings and cycles colors multiple times.
         /// <br/>Input: 50-character string
         /// <br/>Expected: All characters are written, colors cycle through rainbow multiple times.
         /// </summary>
@@ -511,7 +511,7 @@ namespace ShinyConsole.UnitTests
                 Console.SetOut(stringWriter);
 
                 // Act
-                Shiny.Rainbow(message);
+                PainterFactory.Rainbow(message);
 
                 // Assert
                 string output = stringWriter.ToString();
@@ -526,7 +526,7 @@ namespace ShinyConsole.UnitTests
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Rainbow"/> handles special and unicode characters correctly.
+        /// Tests that <see cref="PainterFactory.Rainbow"/> handles special and unicode characters correctly.
         /// <br/>Input: String with special characters like punctuation and unicode
         /// <br/>Expected: All characters are written correctly.
         /// </summary>
@@ -544,7 +544,7 @@ namespace ShinyConsole.UnitTests
                 Console.SetOut(stringWriter);
 
                 // Act
-                Shiny.Rainbow(message);
+                PainterFactory.Rainbow(message);
 
                 // Assert
                 string output = stringWriter.ToString();
@@ -558,7 +558,7 @@ namespace ShinyConsole.UnitTests
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Rainbow"/> handles strings with various types of whitespace correctly.
+        /// Tests that <see cref="PainterFactory.Rainbow"/> handles strings with various types of whitespace correctly.
         /// <br/>Input: String with tabs, newlines, and spaces mixed with text
         /// <br/>Expected: All characters including whitespace are written.
         /// </summary>
@@ -576,7 +576,7 @@ namespace ShinyConsole.UnitTests
                 Console.SetOut(stringWriter);
 
                 // Act
-                Shiny.Rainbow(message);
+                PainterFactory.Rainbow(message);
 
                 // Assert
                 string output = stringWriter.ToString();
@@ -590,7 +590,7 @@ namespace ShinyConsole.UnitTests
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Rainbow"/> handles single character string correctly.
+        /// Tests that <see cref="PainterFactory.Rainbow"/> handles single character string correctly.
         /// <br/>Input: "A"
         /// <br/>Expected: Character is written with first rainbow color, then color is reset.
         /// </summary>
@@ -608,7 +608,7 @@ namespace ShinyConsole.UnitTests
                 Console.SetOut(stringWriter);
 
                 // Act
-                Shiny.Rainbow(message);
+                PainterFactory.Rainbow(message);
 
                 // Assert
                 string output = stringWriter.ToString();
@@ -623,7 +623,7 @@ namespace ShinyConsole.UnitTests
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Rainbow"/> handles single whitespace character correctly.
+        /// Tests that <see cref="PainterFactory.Rainbow"/> handles single whitespace character correctly.
         /// <br/>Input: " "
         /// <br/>Expected: Whitespace is written and color is reset.
         /// </summary>
@@ -641,7 +641,7 @@ namespace ShinyConsole.UnitTests
                 Console.SetOut(stringWriter);
 
                 // Act
-                Shiny.Rainbow(message);
+                PainterFactory.Rainbow(message);
 
                 // Assert
                 string output = stringWriter.ToString();
@@ -656,7 +656,7 @@ namespace ShinyConsole.UnitTests
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Rainbow"/> handles string with consecutive whitespace characters.
+        /// Tests that <see cref="PainterFactory.Rainbow"/> handles string with consecutive whitespace characters.
         /// <br/>Input: "A  B  C" (double spaces between letters)
         /// <br/>Expected: All characters including multiple spaces are written correctly.
         /// </summary>
@@ -674,7 +674,7 @@ namespace ShinyConsole.UnitTests
                 Console.SetOut(stringWriter);
 
                 // Act
-                Shiny.Rainbow(message);
+                PainterFactory.Rainbow(message);
 
                 // Assert
                 string output = stringWriter.ToString();
@@ -688,7 +688,7 @@ namespace ShinyConsole.UnitTests
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Random"/> does not throw when given an empty string.
+        /// Tests that <see cref="PainterFactory.Random"/> does not throw when given an empty string.
         /// <br/>Input: Empty string
         /// <br/>Expected: No exception thrown.
         /// </summary>
@@ -699,14 +699,14 @@ namespace ShinyConsole.UnitTests
             string message = string.Empty;
 
             // Act
-            Shiny.Random(message);
+            PainterFactory.Random(message);
 
             // Assert
             // No exception means success
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Random"/> handles strings containing only whitespace characters without throwing.
+        /// Tests that <see cref="PainterFactory.Random"/> handles strings containing only whitespace characters without throwing.
         /// <br/>Input: Whitespace-only strings
         /// <br/>Expected: No exception thrown.
         /// </summary>
@@ -721,14 +721,14 @@ namespace ShinyConsole.UnitTests
         public void Random_WhitespaceOnlyString_DoesNotThrow(string message)
         {
             // Arrange & Act
-            Shiny.Random(message);
+            PainterFactory.Random(message);
 
             // Assert
             // No exception means success
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Random"/> handles a single non-whitespace character without throwing.
+        /// Tests that <see cref="PainterFactory.Random"/> handles a single non-whitespace character without throwing.
         /// <br/>Input: Single non-whitespace character
         /// <br/>Expected: No exception thrown.
         /// </summary>
@@ -739,14 +739,14 @@ namespace ShinyConsole.UnitTests
             string message = "A";
 
             // Act
-            Shiny.Random(message);
+            PainterFactory.Random(message);
 
             // Assert
             // No exception means success
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Random"/> handles normal strings with mixed characters without throwing.
+        /// Tests that <see cref="PainterFactory.Random"/> handles normal strings with mixed characters without throwing.
         /// <br/>Input: Normal strings
         /// <br/>Expected: No exception thrown.
         /// </summary>
@@ -759,14 +759,14 @@ namespace ShinyConsole.UnitTests
         public void Random_NormalStrings_DoesNotThrow(string message)
         {
             // Arrange & Act
-            Shiny.Random(message);
+            PainterFactory.Random(message);
 
             // Assert
             // No exception means success
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Random"/> handles strings with special and unicode characters without throwing.
+        /// Tests that <see cref="PainterFactory.Random"/> handles strings with special and unicode characters without throwing.
         /// <br/>Input: Strings with special and unicode characters
         /// <br/>Expected: No exception thrown.
         /// </summary>
@@ -781,14 +781,14 @@ namespace ShinyConsole.UnitTests
         public void Random_SpecialCharacters_DoesNotThrow(string message)
         {
             // Arrange & Act
-            Shiny.Random(message);
+            PainterFactory.Random(message);
 
             // Assert
             // No exception means success
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Random"/> handles very long strings without throwing.
+        /// Tests that <see cref="PainterFactory.Random"/> handles very long strings without throwing.
         /// <br/>Input: Very long string
         /// <br/>Expected: No exception thrown.
         /// </summary>
@@ -799,14 +799,14 @@ namespace ShinyConsole.UnitTests
             string message = new string('A', 10000);
 
             // Act
-            Shiny.Random(message);
+            PainterFactory.Random(message);
 
             // Assert
             // No exception means success
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Random"/> handles strings with all whitespace types mixed with characters without throwing.
+        /// Tests that <see cref="PainterFactory.Random"/> handles strings with all whitespace types mixed with characters without throwing.
         /// <br/>Input: Strings mixing whitespace and characters
         /// <br/>Expected: No exception thrown.
         /// </summary>
@@ -817,14 +817,14 @@ namespace ShinyConsole.UnitTests
             string message = "Hello\tWorld\nTest\rLine";
 
             // Act
-            Shiny.Random(message);
+            PainterFactory.Random(message);
 
             // Assert
             // No exception means success
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Random"/> handles strings starting and ending with whitespace without throwing.
+        /// Tests that <see cref="PainterFactory.Random"/> handles strings starting and ending with whitespace without throwing.
         /// <br/>Input: Strings with leading and trailing whitespace
         /// <br/>Expected: No exception thrown.
         /// </summary>
@@ -835,14 +835,14 @@ namespace ShinyConsole.UnitTests
             string message = "  Hello World  ";
 
             // Act
-            Shiny.Random(message);
+            PainterFactory.Random(message);
 
             // Assert
             // No exception means success
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Random"/> handles consecutive whitespace characters without throwing.
+        /// Tests that <see cref="PainterFactory.Random"/> handles consecutive whitespace characters without throwing.
         /// <br/>Input: Strings with consecutive whitespace
         /// <br/>Expected: No exception thrown.
         /// </summary>
@@ -853,14 +853,14 @@ namespace ShinyConsole.UnitTests
             string message = "A     B     C";
 
             // Act
-            Shiny.Random(message);
+            PainterFactory.Random(message);
 
             // Assert
             // No exception means success
         }
 
         /// <summary>
-        /// Tests that <see cref="Shiny.Random"/> handles strings with various control characters without throwing.
+        /// Tests that <see cref="PainterFactory.Random"/> handles strings with various control characters without throwing.
         /// <br/>Input: Strings containing control characters
         /// <br/>Expected: No exception thrown.
         /// </summary>
@@ -871,7 +871,7 @@ namespace ShinyConsole.UnitTests
             string message = "Test\0Null\bBackspace\fFormFeed";
 
             // Act
-            Shiny.Random(message);
+            PainterFactory.Random(message);
 
             // Assert
             // No exception means success
