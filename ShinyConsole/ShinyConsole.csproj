@@ -12,7 +12,7 @@ It gives several standardized options for colorizing console outputs, and also a
 The purpose of this library was to teach a friend some basic concepts whilst having a little fun. Feel free to use this library or its underlying
 code however you see fit. Cheers!	</Description>
 	<PackageLicenseExpression>Unlicense</PackageLicenseExpression>
-	<RepositoryUrl>https://github.com/JJWren/ShinyConsole</RepositoryUrl>
+	<RepositoryUrl>https://github.com/JJWren/ShinyConsole.git</RepositoryUrl>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Title>Shiny Console</Title>
